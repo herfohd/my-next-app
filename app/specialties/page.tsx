@@ -1,274 +1,266 @@
 'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import SpecialtiesHero from './SpecialtiesHero';
-import CoreSpecialties from './CoreSpecialties';
-import ProceduresOffered from './ProceduresOffered';
-import TechnologyApproach from './TechnologyApproach';
 
 export default function SpecialtiesPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
 
+  // Ensure client-side rendering for window access
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const navigationItems = [
-    { name: 'Home', href: '/', key: 'home' },
-    { name: 'About', href: '/about', key: 'about' },
-    { name: 'Specialties', href: '/specialties', key: 'specialties' },
-    { name: 'Experience', href: '/experience', key: 'experience' },
-    { name: 'Contact', href: '/contact', key: 'contact' }
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/specialties', label: 'Specialties' },
+    { href: '/credentials', label: 'Credentials' },
+    { href: '/research', label: 'Research' },
+    { href: '/experience', label: 'Experience' },
+    { href: '/contact', label: 'Contact' },
+  ];
+
+  const specialties = [
+    {
+      title: "Hepatobiliary Surgery",
+      description: "Advanced surgical procedures for liver, gallbladder, and bile duct conditions",
+      icon: "🫀",
+      procedures: [
+        "Laparoscopic Cholecystectomy",
+        "Liver Resection",
+        "Bile Duct Reconstruction",
+        "Hepatic Cyst Management"
+      ]
+    },
+    {
+      title: "Pancreatic Surgery",
+      description: "Complex pancreatic procedures including minimally invasive techniques",
+      icon: "🔬",
+      procedures: [
+        "Pancreaticoduodenectomy (Whipple)",
+        "Distal Pancreatectomy",
+        "Pancreatic Cyst Drainage",
+        "Chronic Pancreatitis Surgery"
+      ]
+    },
+    {
+      title: "Gastrointestinal Surgery",
+      description: "Comprehensive surgical treatment for digestive system disorders",
+      icon: "⚕️",
+      procedures: [
+        "Colorectal Surgery",
+        "Upper GI Surgery",
+        "Hernia Repair",
+        "Bowel Resection"
+      ]
+    },
+    {
+      title: "Minimally Invasive Surgery",
+      description: "Advanced laparoscopic and robotic surgical techniques",
+      icon: "🔧",
+      procedures: [
+        "Laparoscopic Surgery",
+        "Endoscopic Procedures",
+        "Single-Port Surgery",
+        "Robotic-Assisted Surgery"
+      ]
+    }
   ];
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
+    setIsMenuOpen(false);
+  };
+
+  const isActiveLink = (href: string) => {
+    return pathname === href;
+  };
+
+  // Safe scroll function that only works on client
+  const handleScrollToSection = (sectionId: string) => {
+    if (isClient && typeof window !== 'undefined') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Navigation */}
+      <nav className="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
-              <div className="text-2xl font-bold text-blue-600">
-                Dr. Smith
-              </div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-                    pathname === item.href
-                      ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
-                      : 'text-gray-700'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Link
-                href="/contact"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+            <div className="flex items-center">
+              <Link 
+                href="/" 
+                className="text-xl sm:text-2xl font-bold text-blue-900 hover:text-blue-700 transition-colors"
               >
-                Schedule Consultation
+                Dr. Narendra Pandit
               </Link>
+              <span className="ml-2 text-xs sm:text-sm text-gray-600 hidden sm:inline">MBBS, MS, MCh</span>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMobileMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors"
-              aria-expanded={isMobileMenuOpen}
-              aria-label="Toggle mobile menu"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-              >
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                )}
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
                 {navigationItems.map((item) => (
                   <Link
-                    key={item.key}
+                    key={item.href}
                     href={item.href}
-                    onClick={closeMobileMenu}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      pathname === item.href
-                        ? 'text-blue-600 bg-blue-50'
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-100'
+                    className={`px-3 py-2 text-sm font-medium transition-colors ${
+                      isActiveLink(item.href)
+                        ? 'text-blue-900 font-semibold'
+                        : 'text-gray-700 hover:text-blue-700'
                     }`}
                   >
-                    {item.name}
+                    {item.label}
                   </Link>
                 ))}
+              </div>
+            </div>
+
+            {/* Mobile Menu Button - Only render on client */}
+            {isClient && (
+              <div className="md:hidden">
+                <button
+                  onClick={toggleMobileMenu}
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors"
+                  aria-expanded={isMenuOpen}
+                  aria-label="Toggle mobile menu"
+                >
+                  <span className="sr-only">Open main menu</span>
+                  {!isMenuOpen ? (
+                    <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  ) : (
+                    <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Menu - Only render on client */}
+        {isClient && (
+          <div className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t border-gray-200">
+              <span className="block px-3 py-2 text-xs text-gray-600 sm:hidden">MBBS, MS, MCh</span>
+              {navigationItems.map((item) => (
                 <Link
-                  href="/contact"
+                  key={item.href}
+                  href={item.href}
                   onClick={closeMobileMenu}
-                  className="block px-3 py-2 mt-4 bg-blue-600 text-white rounded-lg text-base font-medium text-center hover:bg-blue-700 transition-colors"
+                  className={`block px-3 py-2 text-base font-medium transition-colors rounded-md w-full text-left ${
+                    isActiveLink(item.href)
+                      ? 'text-blue-900 bg-blue-50 hover:text-blue-700 hover:bg-blue-100 font-semibold'
+                      : 'text-gray-700 hover:text-blue-700 hover:bg-gray-50'
+                  }`}
                 >
-                  Schedule Consultation
+                  {item.label}
                 </Link>
-              </div>
+              ))}
             </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Surgical Specialties
+          </h1>
+          <p className="text-xl sm:text-2xl text-blue-200 mb-8 max-w-3xl mx-auto">
+            Advanced surgical expertise in hepatobiliary, pancreatic, and gastrointestinal procedures
+          </p>
+          {isClient && (
+            <button
+              onClick={() => handleScrollToSection('specialties-grid')}
+              className="inline-flex items-center px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-blue-900 rounded-lg transition-colors font-medium"
+            >
+              Explore Specialties
+              <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
           )}
-        </nav>
-      </header>
+        </div>
+      </section>
 
-      {/* Mobile Menu Backdrop */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
-          onClick={closeMobileMenu}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Main Content */}
-      <main className="pt-16">
-        {/* Hero Section */}
-        <SpecialtiesHero />
-
-        {/* Core Specialties Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <CoreSpecialties />
-          </div>
-        </section>
-
-        {/* Procedures Offered Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <ProceduresOffered />
-          </div>
-        </section>
-
-        {/* Technology & Approach Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <TechnologyApproach />
-          </div>
-        </section>
-
-        {/* Specialties Highlight Cards */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Specialized Care Areas
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our comprehensive approach ensures the highest quality care across all specialties
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Specialty Card 1 */}
-              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Cardiovascular Care
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Comprehensive heart health services including diagnostics, treatment, and preventive care.
-                </p>
-                <Link 
-                  href="/specialties/cardiovascular" 
-                  className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center"
-                >
-                  Learn More 
-                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
-
-              {/* Specialty Card 2 */}
-              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Orthopedic Surgery
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Advanced surgical procedures for joint replacement, sports injuries, and musculoskeletal conditions.
-                </p>
-                <Link 
-                  href="/specialties/orthopedic" 
-                  className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center"
-                >
-                  Learn More 
-                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
-
-              {/* Specialty Card 3 */}
-              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.611L5 14.5" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Neurology
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Expert diagnosis and treatment of neurological conditions and disorders of the nervous system.
-                </p>
-                <Link 
-                  href="/specialties/neurology" 
-                  className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center"
-                >
-                  Learn More 
-                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-indigo-600">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Get Started?
+      {/* Specialties Grid */}
+      <section id="specialties-grid" className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Areas of Expertise
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Schedule your consultation today and discover how our specialized care can help you achieve optimal health.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive surgical care with specialized expertise in complex procedures
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors inline-flex items-center justify-center"
-              >
-                Schedule Consultation
-                <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </Link>
-              <Link
-                href="/about"
-                className="border border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors inline-flex items-center justify-center"
-              >
-                Learn About Our Approach
-              </Link>
-            </div>
           </div>
-        </section>
-      </main>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {specialties.map((specialty, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="text-center mb-6">
+                  <div className="text-4xl mb-4">{specialty.icon}</div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{specialty.title}</h3>
+                  <p className="text-gray-600">{specialty.description}</p>
+                </div>
+                
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-gray-900 text-center mb-4">Key Procedures:</h4>
+                  {specialty.procedures.map((procedure, procIndex) => (
+                    <div key={procIndex} className="flex items-center bg-blue-50 rounded-lg p-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="text-gray-700 text-sm">{procedure}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-gradient-to-r from-blue-900 to-teal-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Need Specialized Surgical Care?
+          </h2>
+          <p className="text-xl text-blue-200 mb-8">
+            Schedule a consultation to discuss your treatment options
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-900 bg-white hover:bg-blue-50 transition-colors"
+            >
+              Schedule Consultation
+            </Link>
+            <Link
+              href="/experience"
+              className="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-blue-900 transition-colors"
+            >
+              View Experience
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
