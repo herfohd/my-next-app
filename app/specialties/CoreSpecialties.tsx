@@ -74,24 +74,22 @@ export default function DrPanditSpecialties() {
 
   ];
 
-
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-900 to-slate-900 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-900 to-slate-900 text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-5xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
               Dr. Narendra Pandit
             </h1>
-            <p className="text-xl text-blue-200 mb-2">
+            <p className="text-base sm:text-lg md:text-xl text-blue-200 mb-2">
               MBBS, MS, MCh (Surgical Gastroenterology)
             </p>
-            <p className="text-lg text-blue-300">
+            <p className="text-sm sm:text-base md:text-lg text-blue-300 px-2">
               Associate Professor | Fellow of American College of Surgeons (FACS)
             </p>
-            <div className="mt-8 flex justify-center items-center space-x-8 text-sm">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-8 text-xs sm:text-sm">
               <div className="flex items-center">
                 <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
                 15+ Years Experience
@@ -110,18 +108,18 @@ export default function DrPanditSpecialties() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="text-center mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Areas of Expertise
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
             Comprehensive surgical care combining advanced techniques, academic excellence, and compassionate patient care
           </p>
         </div>
 
         {/* Specialties Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {specialties.map((specialty, index) => (
             <div
               key={index}
@@ -130,38 +128,38 @@ export default function DrPanditSpecialties() {
               }`}
               onClick={() => setActiveSpecialty(activeSpecialty === index ? null : index)}
             >
-              <div className={`bg-gradient-to-br ${specialty.gradient} p-6 text-white`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl">{specialty.icon}</div>
-                  <div className="text-sm bg-white/20 px-3 py-1 rounded-full">
+              <div className={`bg-gradient-to-br ${specialty.gradient} p-4 sm:p-6 text-white`}>
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div className="text-3xl sm:text-4xl">{specialty.icon}</div>
+                  <div className="text-xs sm:text-sm bg-white/20 px-2 sm:px-3 py-1 rounded-full">
                     {specialty.experience}
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-2">{specialty.title}</h3>
-                <p className="text-white/90 text-sm">{specialty.description}</p>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 leading-tight">{specialty.title}</h3>
+                <p className="text-white/90 text-xs sm:text-sm leading-relaxed">{specialty.description}</p>
               </div>
               
-              <div className="p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="p-4 sm:p-6">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
                   Key Expertise:
                 </h4>
                 <ul className="space-y-2">
                   {specialty.expertise.map((item, idx) => (
                     <li key={idx} className="flex items-start text-gray-700">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-sm">{item}</span>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5 sm:mt-2 mr-3 flex-shrink-0"></div>
+                      <span className="text-xs sm:text-sm leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {activeSpecialty === index && (
-                <div className="absolute inset-0 bg-blue-600/95 text-white p-6 flex items-center justify-center">
+                <div className="absolute inset-0 bg-blue-600/95 text-white p-4 sm:p-6 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-5xl mb-4">{specialty.icon}</div>
-                    <h3 className="text-2xl font-bold mb-4">{specialty.title}</h3>
-                    <p className="text-blue-100 mb-6">{specialty.description}</p>
-                    <div className="text-sm">
+                    <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{specialty.icon}</div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 leading-tight">{specialty.title}</h3>
+                    <p className="text-blue-100 mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">{specialty.description}</p>
+                    <div className="text-xs sm:text-sm">
                       <div className="font-semibold mb-2">Experience Level:</div>
                       <div className="text-blue-200">{specialty.experience}</div>
                     </div>
@@ -172,20 +170,18 @@ export default function DrPanditSpecialties() {
           ))}
         </div>
 
-
-
         {/* Contact Information */}
-        <div className="mt-16 bg-white rounded-2xl shadow-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">
+        <div className="mt-12 sm:mt-16 bg-white rounded-2xl shadow-lg p-6 sm:p-8 text-center">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
             Currently Practicing At
           </h3>
-          <div className="text-lg text-gray-700 mb-4">
+          <div className="text-base sm:text-lg text-gray-700 mb-3 sm:mb-4">
             <strong>Birat Medical College Teaching Hospital</strong>
           </div>
-          <div className="text-gray-600 mb-6">
+          <div className="text-gray-600 mb-4 sm:mb-6">
             Biratnagar, Nepal
           </div>
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-600">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm text-gray-600">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
               Nepal Medical Council Reg: 6121

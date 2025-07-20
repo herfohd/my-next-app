@@ -87,16 +87,16 @@ export default function ResearchInterests() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Research Leadership</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Research Leadership</h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
             Principal investigator in clinical and surgical research advancing patient care and academic insight
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {interests.map((interest, index) => {
             const colors = getColorClasses(interest.color);
             return (
@@ -112,35 +112,35 @@ export default function ResearchInterests() {
                   }
                 }}
               >
-                <div className={`${colors.bg} p-6 text-white relative`}>
-                  <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-full mb-4">
-                    <i className={`${interest.icon} text-2xl text-white`}></i>
+                <div className={`${colors.bg} p-4 sm:p-6 text-white relative`}>
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-white/20 rounded-full mb-3 sm:mb-4">
+                    <i className={`${interest.icon} text-xl sm:text-2xl text-white`}></i>
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{interest.title}</h3>
-                  <p className="text-white/90 leading-relaxed">{interest.description}</p>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 leading-tight">{interest.title}</h3>
+                  <p className="text-white/90 leading-relaxed text-sm sm:text-base">{interest.description}</p>
                   
                   {/* Click indicator */}
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <i className="ri-external-link-line text-white/80 text-lg"></i>
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i className="ri-external-link-line text-white/80 text-base sm:text-lg"></i>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Details:</h4>
-                  <ul className="space-y-3">
+                <div className="p-4 sm:p-6">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Details:</h4>
+                  <ul className="space-y-2 sm:space-y-3">
                     {interest.projects.map((project, idx) => (
                       <li key={idx} className="flex items-start">
-                        <div className={`w-6 h-6 flex items-center justify-center ${colors.light} rounded-full mr-3 mt-0.5`}>
-                          <i className={`ri-arrow-right-s-line text-sm ${colors.text}`}></i>
+                        <div className={`w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center ${colors.light} rounded-full mr-2 sm:mr-3 mt-0.5 flex-shrink-0`}>
+                          <i className={`ri-arrow-right-s-line text-xs sm:text-sm ${colors.text}`}></i>
                         </div>
-                        <span className="text-gray-700">{project}</span>
+                        <span className="text-gray-700 text-sm sm:text-base leading-relaxed">{project}</span>
                       </li>
                     ))}
                   </ul>
                   
                   {/* Subtle click to view hint */}
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="flex items-center text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
+                  <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                    <div className="flex items-center text-xs sm:text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
                       <i className="ri-file-text-line mr-2"></i>
                       <span>Click to view published article</span>
                     </div>
@@ -151,32 +151,32 @@ export default function ResearchInterests() {
           })}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">Research Focus & Impact</h3>
-            <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+        <div className="mt-12 sm:mt-16 text-center">
+          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-12">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Research Focus & Impact</h3>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
               Committed to advancing hepatobiliary and pancreatic surgery through clinical research, case studies, and evidence-based practice improvements.
             </p>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center group cursor-pointer">
-                <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
-                  <i className="ri-file-text-line text-2xl text-blue-600"></i>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-blue-100 rounded-full mx-auto mb-3 sm:mb-4 group-hover:bg-blue-200 transition-colors">
+                  <i className="ri-file-text-line text-xl sm:text-2xl text-blue-600"></i>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Published Research</h4>
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Published Research</h4>
                 <p className="text-gray-600 text-sm">6 peer-reviewed publications in clinical journals</p>
               </div>
               <div className="text-center group cursor-pointer">
-                <div className="w-16 h-16 flex items-center justify-center bg-green-100 rounded-full mx-auto mb-4 group-hover:bg-green-200 transition-colors">
-                  <i className="ri-hospital-line text-2xl text-green-600"></i>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-green-100 rounded-full mx-auto mb-3 sm:mb-4 group-hover:bg-green-200 transition-colors">
+                  <i className="ri-hospital-line text-xl sm:text-2xl text-green-600"></i>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Clinical Expertise</h4>
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Clinical Expertise</h4>
                 <p className="text-gray-600 text-sm">Hepatobiliary & pancreatic surgery specialization</p>
               </div>
-              <div className="text-center group cursor-pointer">
-                <div className="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mx-auto mb-4 group-hover:bg-purple-200 transition-colors">
-                  <i className="ri-microscope-line text-2xl text-purple-600"></i>
+              <div className="text-center group cursor-pointer sm:col-span-2 md:col-span-1">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-purple-100 rounded-full mx-auto mb-3 sm:mb-4 group-hover:bg-purple-200 transition-colors">
+                  <i className="ri-microscope-line text-xl sm:text-2xl text-purple-600"></i>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Research Areas</h4>
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Research Areas</h4>
                 <p className="text-gray-600 text-sm">Bile duct pathology & surgical outcomes</p>
               </div>
             </div>

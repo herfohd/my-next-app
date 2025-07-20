@@ -71,44 +71,54 @@ export default function Awards() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Awards & Achievements</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
+            Awards & Achievements
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Recognition for academic excellence, scholarly achievements, and contributions to medical education
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {awards.map((award, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 rounded-full text-white">
-                  <i className={`${award.icon} text-xl`}></i>
+            <div key={index} className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 rounded-full text-white flex-shrink-0">
+                  <i className={`${award.icon} text-lg sm:text-xl`}></i>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(award.category)}`}>
+                <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ml-2 ${getCategoryColor(award.category)}`}>
                   {award.category}
                 </span>
               </div>
               
-              <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">{award.title}</h3>
-              <p className="text-blue-600 font-semibold mb-2 text-sm">{award.organization}</p>
-              <p className="text-sm text-gray-500 mb-3 flex items-center">
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 line-clamp-2 leading-tight">
+                {award.title}
+              </h3>
+              <p className="text-blue-600 font-semibold mb-2 text-xs sm:text-sm leading-tight">
+                {award.organization}
+              </p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3 flex items-center">
                 <i className="ri-calendar-line mr-1"></i>
                 {award.year}
               </p>
-              <p className="text-gray-700 text-sm leading-relaxed">{award.description}</p>
+              <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
+                {award.description}
+              </p>
             </div>
           ))}
         </div>
         
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg">
-            <i className="ri-trophy-line text-xl mr-2"></i>
-            <span className="font-semibold">Lifetime Member of Multiple Professional Organizations</span>
+        <div className="mt-12 sm:mt-16 text-center px-4">
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-lg">
+            <i className="ri-trophy-line text-lg sm:text-xl mr-2"></i>
+            <span className="font-semibold text-sm sm:text-base">
+              Lifetime Member of Multiple Professional Organizations
+            </span>
           </div>
-          <p className="mt-4 text-gray-600 text-sm">
+          <p className="mt-3 sm:mt-4 text-gray-600 text-xs sm:text-sm leading-relaxed max-w-4xl mx-auto">
             Nepal Medical Association (NMA) • Society of Surgeons of Nepal (SSN) • 
             Nepalese Association of Surgical Gastroenterology (NASG) • Fellow of American College of Surgeons (FACS)
           </p>

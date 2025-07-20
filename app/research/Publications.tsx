@@ -152,46 +152,46 @@ export default function Publications() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Published Research</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Published Research</h2>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-2">
             Peer-reviewed publications contributing to the advancement of gastrointestinal surgery
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {publications.map((pub, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-              <div className="flex flex-wrap items-start justify-between mb-4">
+            <div key={index} className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 lg:p-8 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">{pub.title}</h3>
-                  <div className="flex flex-wrap items-center gap-4 mb-3">
-                    <p className="text-blue-600 font-semibold">{pub.journal}</p>
-                    <span className="text-gray-400">•</span>
-                    <span className="text-gray-600">{pub.year}</span>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getImpactColor(pub.impact)}`}>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 leading-tight">{pub.title}</h3>
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 sm:gap-4 mb-3">
+                    <p className="text-blue-600 font-semibold text-sm sm:text-base">{pub.journal}</p>
+                    <span className="text-gray-400 hidden sm:inline">•</span>
+                    <span className="text-gray-600 text-sm sm:text-base">{pub.year}</span>
+                    <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium w-fit ${getImpactColor(pub.impact)}`}>
                       {pub.impact}
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4 mt-2">
+                <div className="flex items-center justify-end lg:justify-center space-x-4 mt-2 lg:mt-0 lg:ml-4">
                   <div className="text-center">
-                    <div className="text-xl font-bold text-blue-900">{pub.citations}</div>
+                    <div className="text-lg sm:text-xl font-bold text-blue-900">{pub.citations}</div>
                     <div className="text-xs text-gray-500">Citations</div>
                   </div>
                 </div>
               </div>
 
-              <p className="text-gray-700 leading-relaxed mb-4">{pub.abstract}</p>
+              <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">{pub.abstract}</p>
 
-              <div className="flex flex-wrap items-center justify-between pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+              <div className="flex flex-col gap-4 pt-4 border-t border-gray-100">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-800 w-fit">
                     {pub.type}
                   </span>
-                  <span className="text-sm text-gray-500">
+                  <div className="text-xs sm:text-sm text-gray-500 break-all">
                     DOI: <a 
                       href={pub.doi} 
                       target="_blank" 
@@ -201,15 +201,15 @@ export default function Publications() {
                     >
                       {pub.doi}
                     </a>
-                  </span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2 mt-2 sm:mt-0">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2">
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
                       handleDownloadPDF(pub.doi, pub.title);
                     }}
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm whitespace-nowrap"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                   >
                     <i className="ri-file-download-line mr-2"></i>
                     Download PDF
@@ -219,7 +219,7 @@ export default function Publications() {
                       e.stopPropagation();
                       handleShare(pub.title, pub.doi);
                     }}
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm whitespace-nowrap"
+                    className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                   >
                     <i className="ri-share-line mr-2"></i>
                     Share
@@ -230,24 +230,24 @@ export default function Publications() {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-purple-900 to-blue-900 rounded-2xl p-8 lg:p-12 text-white text-center">
-          <h3 className="text-3xl font-bold mb-8">Research Impact</h3>
-          <div className="grid md:grid-cols-4 gap-8">
+        <div className="mt-12 sm:mt-16 bg-gradient-to-r from-purple-900 to-blue-900 rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-12 text-white text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Research Impact</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold mb-2 group-hover:text-purple-300 transition-colors">70+</div>
-              <div className="text-purple-200">Publications</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 group-hover:text-purple-300 transition-colors">70+</div>
+              <div className="text-purple-200 text-sm sm:text-base">Publications</div>
             </div>
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold mb-2 group-hover:text-purple-300 transition-colors">1,200+</div>
-              <div className="text-purple-200">Total Citations</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 group-hover:text-purple-300 transition-colors">1,200+</div>
+              <div className="text-purple-200 text-sm sm:text-base">Total Citations</div>
             </div>
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold mb-2 group-hover:text-purple-300 transition-colors">15</div>
-              <div className="text-purple-200">H-Index</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 group-hover:text-purple-300 transition-colors">15</div>
+              <div className="text-purple-200 text-sm sm:text-base">H-Index</div>
             </div>
             <div className="group cursor-pointer">
-              <div className="text-4xl font-bold mb-2 group-hover:text-purple-300 transition-colors">8</div>
-              <div className="text-purple-200">Research Awards</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 group-hover:text-purple-300 transition-colors">8</div>
+              <div className="text-purple-200 text-sm sm:text-base">Research Awards</div>
             </div>
           </div>
         </div>

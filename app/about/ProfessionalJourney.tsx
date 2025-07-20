@@ -98,23 +98,45 @@ export default function ProfessionalJourney() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Professional Journey</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional Journey</h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             A timeline of dedication, learning, and achievement in the field of surgical gastroenterology
           </p>
         </div>
         
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-blue-200"></div>
+          {/* Timeline line - hidden on mobile, visible on md+ */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-blue-200"></div>
           
-          <div className="space-y-12">
+          {/* Mobile timeline line - visible only on mobile */}
+          <div className="md:hidden absolute left-8 top-0 h-full w-0.5 bg-blue-200"></div>
+          
+          <div className="space-y-8 md:space-y-12">
             {milestones.map((milestone, index) => (
-              <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+              <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'} justify-start`}>
+                {/* Mobile layout */}
+                <div className="md:hidden w-full pl-16">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="flex items-start sm:items-center mb-4 flex-col sm:flex-row">
+                      <div className="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full sm:mr-4 mb-3 sm:mb-0 flex-shrink-0">
+                        <div className="text-blue-600">
+                          {iconComponents[milestone.icon]}
+                        </div>
+                      </div>
+                      <div className="flex-grow">
+                        <div className="text-xl sm:text-2xl font-bold text-blue-900">{milestone.year}</div>
+                        <div className="text-base sm:text-lg font-semibold text-gray-800">{milestone.title}</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{milestone.description}</p>
+                  </div>
+                </div>
+
+                {/* Desktop layout */}
+                <div className={`hidden md:block w-full md:w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
                   <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
@@ -131,8 +153,12 @@ export default function ProfessionalJourney() {
                   </div>
                 </div>
                 
-                {/* Timeline dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+                {/* Timeline dots */}
+                {/* Mobile dot */}
+                <div className="md:hidden absolute left-6 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+                
+                {/* Desktop dot */}
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
               </div>
             ))}
           </div>

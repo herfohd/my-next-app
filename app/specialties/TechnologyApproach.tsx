@@ -29,19 +29,23 @@ export default function TechnologyApproach() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Advanced Technology & Approach</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Advanced Technology & Approach
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
             Utilizing cutting-edge medical technology to deliver superior surgical outcomes
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12">
+        {/* Technologies Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {technologies.map((tech, index) => (
             <div key={index} className="group">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl mb-6 h-64">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl mb-4 sm:mb-6 h-48 sm:h-56 lg:h-64">
                 <div 
                   className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
                   style={{
@@ -54,38 +58,61 @@ export default function TechnologyApproach() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{tech.name}</h3>
-              <p className="text-gray-700 leading-relaxed">{tech.description}</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+                {tech.name}
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                {tech.description}
+              </p>
             </div>
           ))}
         </div>
         
-        <div className="mt-20 bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-8 lg:p-12 text-white text-center">
-          <h3 className="text-3xl font-bold mb-6">Patient-Centered Surgical Care</h3>
-          <p className="text-xl text-blue-200 mb-8 max-w-4xl mx-auto leading-relaxed">
+        {/* Patient-Centered Care Section */}
+        <div className="mt-16 sm:mt-20 bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl p-6 sm:p-8 lg:p-12 text-white text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+            Patient-Centered Surgical Care
+          </h3>
+          <p className="text-lg sm:text-xl text-blue-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
             Our approach combines advanced technology with personalized care, ensuring each patient receives the most appropriate treatment for their specific condition. We prioritize safety, effectiveness, and rapid recovery.
           </p>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
             <div className="group cursor-pointer">
-              <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-full mx-auto mb-4 group-hover:bg-white/30 transition-colors">
-                <i className="ri-shield-check-line text-2xl text-white"></i>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-white/20 rounded-full mx-auto mb-3 sm:mb-4 group-hover:bg-white/30 transition-colors">
+                <i className="ri-shield-check-line text-xl sm:text-2xl text-white"></i>
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">Safety First</h4>
-              <p className="text-blue-200 text-sm">Comprehensive safety protocols and risk management</p>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-2">
+                Safety First
+              </h4>
+              <p className="text-blue-200 text-xs sm:text-sm leading-relaxed">
+                Comprehensive safety protocols and risk management
+              </p>
             </div>
+            
             <div className="group cursor-pointer">
-              <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-full mx-auto mb-4 group-hover:bg-white/30 transition-colors">
-                <i className="ri-timer-line text-2xl text-white"></i>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-white/20 rounded-full mx-auto mb-3 sm:mb-4 group-hover:bg-white/30 transition-colors">
+                <i className="ri-timer-line text-xl sm:text-2xl text-white"></i>
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">Faster Recovery</h4>
-              <p className="text-blue-200 text-sm">Minimally invasive techniques for quicker healing</p>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-2">
+                Faster Recovery
+              </h4>
+              <p className="text-blue-200 text-xs sm:text-sm leading-relaxed">
+                Minimally invasive techniques for quicker healing
+              </p>
             </div>
+            
             <div className="group cursor-pointer">
-              <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-full mx-auto mb-4 group-hover:bg-white/30 transition-colors">
-                <i className="ri-award-line text-2xl text-white"></i>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-white/20 rounded-full mx-auto mb-3 sm:mb-4 group-hover:bg-white/30 transition-colors">
+                <i className="ri-award-line text-xl sm:text-2xl text-white"></i>
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">Excellence</h4>
-              <p className="text-blue-200 text-sm">Commitment to the highest surgical standards</p>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-2">
+                Excellence
+              </h4>
+              <p className="text-blue-200 text-xs sm:text-sm leading-relaxed">
+                Commitment to the highest surgical standards
+              </p>
             </div>
           </div>
         </div>

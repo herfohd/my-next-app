@@ -97,10 +97,10 @@ export default function BiratMedicalEnhanced() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+    <section className="py-8 sm:py-12 lg:py-20 bg-gradient-to-br from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header with Better Cover Photo */}
-        <div className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl">
+        <div className="relative mb-8 sm:mb-12 lg:mb-16 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -110,22 +110,22 @@ export default function BiratMedicalEnhanced() {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80"></div>
           </div>
           
-          <div className="relative text-center py-20 px-8 text-white">
-            <h2 className="text-5xl font-bold mb-4">Dr. Narendra Pandit</h2>
-            <p className="text-2xl mb-6 text-blue-200">
+          <div className="relative text-center py-10 sm:py-16 lg:py-20 px-4 sm:px-8 text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4">Dr. Narendra Pandit</h2>
+            <p className="text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 text-blue-200">
               Associate Professor of Surgical Gastroenterology
             </p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 inline-block">
-              <p className="text-lg mb-2">MBBS, MS, MCh (Surgical Gastroenterology)</p>
-              <p className="text-blue-200 mb-2">Nepal Medical Council Registration: {contactInfo.doctor.nmc}</p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 inline-block max-w-full">
+              <p className="text-sm sm:text-base lg:text-lg mb-2">MBBS, MS, MCh (Surgical Gastroenterology)</p>
+              <p className="text-blue-200 mb-2 text-sm sm:text-base">Nepal Medical Council Registration: {contactInfo.doctor.nmc}</p>
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm">
                 <a 
                   href={`mailto:${contactInfo.doctor.email}`}
-                  className="hover:text-blue-300 transition-colors underline"
+                  className="hover:text-blue-300 transition-colors underline break-all"
                 >
                   {contactInfo.doctor.email}
                 </a>
-                <span>|</span>
+                <span className="hidden sm:inline">|</span>
                 <a 
                   href={`tel:${contactInfo.doctor.phone}`}
                   className="hover:text-blue-300 transition-colors underline"
@@ -138,25 +138,25 @@ export default function BiratMedicalEnhanced() {
         </div>
         
         {/* Enhanced Achievements with Links */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16">
           {achievements.map((achievement, index) => (
             <a 
               key={index}
               href={achievement.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer group"
+              className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer group"
             >
-              <div className="flex items-start space-x-4">
-                <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
-                  <i className={`${achievement.icon} text-2xl text-blue-600`}></i>
+              <div className="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors shrink-0">
+                  <i className={`${achievement.icon} text-lg sm:text-xl lg:text-2xl text-blue-600`}></i>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors break-words">
                     {achievement.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed mb-3">{achievement.description}</p>
-                  <div className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium group-hover:bg-blue-200 transition-colors">
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">{achievement.description}</p>
+                  <div className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm font-medium group-hover:bg-blue-200 transition-colors">
                     {achievement.stats}
                   </div>
                 </div>
@@ -166,8 +166,8 @@ export default function BiratMedicalEnhanced() {
         </div>
         
         {/* Enhanced Facilities Section with Better Images and Links */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-16">
-          <div className="relative bg-gradient-to-r from-blue-900 to-blue-800 p-8 text-white text-center">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl overflow-hidden mb-8 sm:mb-12 lg:mb-16">
+          <div className="relative bg-gradient-to-r from-blue-900 to-blue-800 p-4 sm:p-6 lg:p-8 text-white text-center">
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-20"
               style={{
@@ -175,32 +175,32 @@ export default function BiratMedicalEnhanced() {
               }}
             ></div>
             <div className="relative z-10">
-              <h3 className="text-4xl font-bold mb-4">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">
                 <a 
                   href={contactInfo.hospital.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-200 transition-colors"
+                  className="hover:text-blue-200 transition-colors break-words"
                 >
                   Birat Medical College Teaching Hospital
                 </a>
               </h3>
-              <p className="text-xl text-blue-200 mb-4">
+              <p className="text-base sm:text-lg lg:text-xl text-blue-200 mb-3 sm:mb-4">
                 Advanced medical education and surgical gastroenterology services
               </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span>{contactInfo.hospital.address}</span>
-                <span>|</span>
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm">
+                <span className="break-words">{contactInfo.hospital.address}</span>
+                <span className="hidden sm:inline">|</span>
                 <a 
                   href={`tel:${contactInfo.hospital.phone}`}
                   className="hover:text-blue-300 transition-colors underline"
                 >
                   {contactInfo.hospital.phone}
                 </a>
-                <span>|</span>
+                <span className="hidden sm:inline">|</span>
                 <a 
                   href={`mailto:${contactInfo.hospital.email}`}
-                  className="hover:text-blue-300 transition-colors underline"
+                  className="hover:text-blue-300 transition-colors underline break-all"
                 >
                   {contactInfo.hospital.email}
                 </a>
@@ -208,7 +208,7 @@ export default function BiratMedicalEnhanced() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 p-4 sm:p-6 lg:p-8">
             {facilities.map((facility, index) => (
               <a 
                 key={index}
@@ -217,20 +217,20 @@ export default function BiratMedicalEnhanced() {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <div className="relative overflow-hidden rounded-xl shadow-lg mb-4 h-48">
+                <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-lg mb-4 h-40 sm:h-44 lg:h-48">
                   <img 
                     src={facility.image}
                     alt={facility.name}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-lg font-bold group-hover:text-blue-200 transition-colors">
+                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
+                    <h4 className="text-base sm:text-lg font-bold group-hover:text-blue-200 transition-colors break-words">
                       {facility.name}
                     </h4>
                   </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors">
                   {facility.description}
                 </p>
               </a>
@@ -239,21 +239,23 @@ export default function BiratMedicalEnhanced() {
         </div>
         
         {/* Educational & Professional Timeline */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">Educational & Professional Journey</h3>
+        <div className="mb-8 sm:mb-12 lg:mb-16">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-6 sm:mb-8 lg:mb-12 px-4">Educational & Professional Journey</h3>
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-blue-200"></div>
-            <div className="space-y-8">
+            {/* Timeline line - hidden on mobile, visible on larger screens */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-blue-200"></div>
+            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
               {timeline.map((milestone, index) => (
-                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                      <div className="text-2xl font-bold text-blue-900 mb-2">{milestone.year}</div>
-                      <div className="text-lg font-semibold text-gray-800 mb-2">{milestone.title}</div>
-                      <p className="text-gray-600">{milestone.description}</p>
+                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'} justify-center`}>
+                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} px-4 md:px-0`}>
+                    <div className="bg-white p-4 sm:p-5 lg:p-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900 mb-1 sm:mb-2">{milestone.year}</div>
+                      <div className="text-base sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2 break-words">{milestone.title}</div>
+                      <p className="text-sm sm:text-base text-gray-600">{milestone.description}</p>
                     </div>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+                  {/* Timeline dot - hidden on mobile */}
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-blue-600 rounded-full border-2 sm:border-4 border-white shadow-lg"></div>
                 </div>
               ))}
             </div>
@@ -261,42 +263,42 @@ export default function BiratMedicalEnhanced() {
         </div>
 
         {/* Enhanced Research & Publications */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-              <i className="ri-file-text-line text-blue-600 mr-3"></i>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12 lg:mb-16">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
+              <i className="ri-file-text-line text-blue-600 mr-2 sm:mr-3"></i>
               Recent Publications
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {publications.map((pub, index) => (
-                <div key={index} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <p className="text-gray-700 text-sm leading-relaxed">{pub}</p>
+                <div key={index} className="p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">{pub}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-6 text-center">
+            <div className="mt-4 sm:mt-6 text-center">
               <a 
                 href="https://www.researchgate.net/profile/Narendra-Pandit"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full text-sm font-medium hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors"
               >
                 View All Publications
-                <i className="ri-external-link-line ml-2"></i>
+                <i className="ri-external-link-line ml-1 sm:ml-2"></i>
               </a>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-              <i className="ri-group-line text-blue-600 mr-3"></i>
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
+              <i className="ri-group-line text-blue-600 mr-2 sm:mr-3"></i>
               Professional Memberships
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {memberships.map((membership, index) => (
-                <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
-                  <p className="text-gray-700 font-medium">{membership}</p>
+                <div key={index} className="flex items-center p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-600 rounded-full mr-3 sm:mr-4 shrink-0"></div>
+                  <p className="text-sm sm:text-base text-gray-700 font-medium break-words">{membership}</p>
                 </div>
               ))}
             </div>
@@ -304,20 +306,20 @@ export default function BiratMedicalEnhanced() {
         </div>
 
         {/* Awards & Recognition */}
-        <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl shadow-xl p-8 text-white mb-16">
-          <h3 className="text-3xl font-bold text-center mb-8">Awards & Recognition</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h4 className="text-xl font-bold mb-3">Academic Excellence</h4>
-              <ul className="space-y-2 text-blue-100">
+        <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 text-white mb-8 sm:mb-12 lg:mb-16">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Awards & Recognition</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6">
+              <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Academic Excellence</h4>
+              <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-blue-100">
                 <li>• Prof. Damber B. Karki Gold Medal for Medicine (2005)</li>
                 <li>• Highest marks in ENT & Pharmacology (2002-2004)</li>
                 <li>• MBBS Scholarship Award from Ministry of Education (2000)</li>
               </ul>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h4 className="text-xl font-bold mb-3">International Recognition</h4>
-              <ul className="space-y-2 text-blue-100">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6">
+              <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">International Recognition</h4>
+              <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-blue-100">
                 <li>• MS Scholarship Award as Foreign Nation - PGIMER (2007)</li>
                 <li>• MCh Scholarship Award as Foreign Nation - PGIMER (2012)</li>
                 <li>• Fellow of American College of Surgeons (FACS)</li>
@@ -327,33 +329,33 @@ export default function BiratMedicalEnhanced() {
         </div>
 
         {/* Contact & Appointment Section */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl shadow-xl p-8 text-white text-center">
-          <h3 className="text-3xl font-bold mb-6">Book an Appointment</h3>
-          <p className="text-xl mb-8 text-green-100">
+        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 text-white text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Book an Appointment</h3>
+          <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-green-100">
             For consultation and surgical gastroenterology services
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <a 
               href={`tel:${contactInfo.doctor.phone}`}
-              className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-blue-600 rounded-full text-sm sm:text-base font-medium hover:bg-blue-50 transition-colors"
             >
-              <i className="ri-phone-line mr-2"></i>
+              <i className="ri-phone-line mr-1 sm:mr-2"></i>
               Call Doctor
             </a>
             <a 
               href={`tel:${contactInfo.hospital.phone}`}
-              className="inline-flex items-center px-6 py-3 bg-white text-green-600 rounded-full font-medium hover:bg-green-50 transition-colors"
+              className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-green-600 rounded-full text-sm sm:text-base font-medium hover:bg-green-50 transition-colors"
             >
-              <i className="ri-hospital-line mr-2"></i>
+              <i className="ri-hospital-line mr-1 sm:mr-2"></i>
               Call Hospital
             </a>
             <a 
               href={contactInfo.hospital.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full font-medium hover:bg-white/20 transition-colors"
+              className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm sm:text-base font-medium hover:bg-white/20 transition-colors"
             >
-              <i className="ri-global-line mr-2"></i>
+              <i className="ri-global-line mr-1 sm:mr-2"></i>
               Visit Website
             </a>
           </div>

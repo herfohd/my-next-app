@@ -2,7 +2,8 @@
 
 export default function AboutHero() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-16 sm:py-20 overflow-hidden">
+
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -17,17 +18,21 @@ export default function AboutHero() {
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 transform hover:scale-105 transition-transform duration-300">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 transform hover:scale-105 transition-transform duration-300">
+
             About Dr. Narendra Pandit
           </h1>
-          <p className="text-xl md:text-2xl text-blue-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl md:text-2xl text-blue-200 max-w-4xl mx-auto leading-relaxed">
+
             A dedicated surgeon committed to providing exceptional gastrointestinal surgical care through innovation, expertise, and compassionate patient treatment
           </p>
         </div>
       </div>
       
       {/* Floating elements */}
-      <div className="absolute top-20 left-10 w-16 h-16 flex items-center justify-center text-white/20 animate-bounce">
+      <div className="hidden sm:block absolute bottom-20 right-10 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center text-white/20 animate-bounce" style={{animationDelay: '1s'}}>
+
+
         <i className="ri-user-heart-line text-3xl"></i>
       </div>
       <div className="absolute bottom-20 right-10 w-16 h-16 flex items-center justify-center text-white/20 animate-bounce" style={{animationDelay: '1s'}}>

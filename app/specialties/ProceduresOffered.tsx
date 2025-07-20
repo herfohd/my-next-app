@@ -88,29 +88,29 @@ export default function ProceduresOffered() {
     }
   ];
 
-
-
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Procedures Offered</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Procedures Offered</h2>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive range of surgical procedures using the latest techniques and technology
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* Procedures Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {procedures.map((category, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">{category.category}</h3>
-              <ul className="space-y-4">
+            <div key={index} className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">{category.category}</h3>
+              <ul className="space-y-3 sm:space-y-4">
                 {category.items.map((item, idx) => (
                   <li key={idx} className="flex items-start">
-                    <div className="w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full mr-3 mt-1">
-                      <i className="ri-check-line text-sm text-blue-600"></i>
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center bg-blue-100 rounded-full mr-3 mt-0.5 sm:mt-1 flex-shrink-0">
+                      <i className="ri-check-line text-xs sm:text-sm text-blue-600"></i>
                     </div>
-                    <span className="text-gray-700">{item}</span>
+                    <span className="text-sm sm:text-base text-gray-700 leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -120,13 +120,16 @@ export default function ProceduresOffered() {
 
         {/* Video Section */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div className="grid lg:grid-cols-2">
-            <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">Surgical Excellence in Action</h3>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Text Content */}
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
+                Surgical Excellence in Action
+              </h3>
+              <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                 Watch our state-of-the-art surgical procedures and learn about the advanced techniques used at Birat Medical College. Our commitment to excellence is evident in every operation.
               </p>
-              <div className="flex items-center space-x-4 text-sm text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0 text-sm text-gray-600">
                 <div className="flex items-center">
                   <i className="ri-play-circle-line text-lg mr-2 text-blue-600"></i>
                   <span>HD Quality</span>
@@ -138,22 +141,22 @@ export default function ProceduresOffered() {
               </div>
             </div>
 
-            {/* Clickable Facebook Video Thumbnail */}
-            <div className="relative h-64 lg:h-auto">
+            {/* Video Thumbnail */}
+            <div className="relative h-48 sm:h-64 lg:h-auto order-1 lg:order-2">
               <a
                 href="https://www.facebook.com/watch/?v=374131885647681"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full h-full relative"
+                className="block w-full h-full relative group"
               >
                 <img
                   src="/video-thumbnail.jpg"
                   alt="Watch Surgical Video on Facebook"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
-                    <i className="ri-play-fill text-3xl text-blue-600 ml-1"></i>
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i className="ri-play-fill text-2xl sm:text-3xl text-blue-600 ml-1"></i>
                   </div>
                 </div>
               </a>
