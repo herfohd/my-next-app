@@ -1,18 +1,21 @@
 'use client';
 
 import Link from 'next/link';
+import React from 'react';
 
-export default function NotFound() {
+export default function NotFound(): React.JSX.Element {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
-      {/* Add custom CSS for animation delays */}
-      <style jsx>{`
-        .delay-1 { animation-delay: 1s; }
-        .delay-2 { animation-delay: 2s; }
-        .delay-0-5 { animation-delay: 0.5s; }
-        .delay-1-5 { animation-delay: 1.5s; }
-        .delay-2-5 { animation-delay: 2.5s; }
-      `}</style>
+      {/* Add custom CSS using a style tag instead of styled-jsx */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .delay-1 { animation-delay: 1s; }
+          .delay-2 { animation-delay: 2s; }
+          .delay-0-5 { animation-delay: 0.5s; }
+          .delay-1-5 { animation-delay: 1.5s; }
+          .delay-2-5 { animation-delay: 2.5s; }
+        `
+      }} />
 
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 w-20 h-20 bg-blue-100 rounded-full opacity-50 animate-pulse"></div>
