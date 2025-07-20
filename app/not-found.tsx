@@ -5,17 +5,26 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+      {/* Add custom CSS for animation delays */}
+      <style jsx>{`
+        .delay-1 { animation-delay: 1s; }
+        .delay-2 { animation-delay: 2s; }
+        .delay-0-5 { animation-delay: 0.5s; }
+        .delay-1-5 { animation-delay: 1.5s; }
+        .delay-2-5 { animation-delay: 2.5s; }
+      `}</style>
+
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 w-20 h-20 bg-blue-100 rounded-full opacity-50 animate-pulse"></div>
-      <div className="absolute top-1/4 right-16 w-16 h-16 bg-purple-100 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
-      <div className="absolute bottom-1/4 left-1/4 w-12 h-12 bg-blue-200 rounded-full opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-      <div className="absolute bottom-16 right-10 w-24 h-24 bg-purple-100 rounded-full opacity-40 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+      <div className="absolute top-1/4 right-16 w-16 h-16 bg-purple-100 rounded-full opacity-40 animate-pulse delay-1"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-12 h-12 bg-blue-200 rounded-full opacity-30 animate-pulse delay-2"></div>
+      <div className="absolute bottom-16 right-10 w-24 h-24 bg-purple-100 rounded-full opacity-40 animate-pulse delay-0-5"></div>
 
       {/* Medical icons floating */}
-      <div className="absolute top-20 right-1/4 text-blue-200 opacity-60 animate-bounce" style={{animationDelay: '1.5s'}}>
+      <div className="absolute top-20 right-1/4 text-blue-200 opacity-60 animate-bounce delay-1-5">
         <i className="ri-stethoscope-line text-2xl"></i>
       </div>
-      <div className="absolute bottom-32 left-16 text-purple-200 opacity-60 animate-bounce" style={{animationDelay: '2.5s'}}>
+      <div className="absolute bottom-32 left-16 text-purple-200 opacity-60 animate-bounce delay-2-5">
         <i className="ri-heart-pulse-line text-2xl"></i>
       </div>
 
