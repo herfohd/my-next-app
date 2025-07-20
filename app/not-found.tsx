@@ -6,7 +6,7 @@ import React from 'react';
 export default function NotFound(): React.JSX.Element {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
-      {/* Add custom CSS using a style tag instead of styled-jsx */}
+      {/* Inline styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           .delay-1 { animation-delay: 1s; }
@@ -25,10 +25,14 @@ export default function NotFound(): React.JSX.Element {
 
       {/* Medical icons floating */}
       <div className="absolute top-20 right-1/4 text-blue-200 opacity-60 animate-bounce delay-1-5">
-        <i className="ri-stethoscope-line text-2xl"></i>
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd"/>
+        </svg>
       </div>
       <div className="absolute bottom-32 left-16 text-purple-200 opacity-60 animate-bounce delay-2-5">
-        <i className="ri-heart-pulse-line text-2xl"></i>
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/>
+        </svg>
       </div>
 
       {/* Main content */}
@@ -64,7 +68,9 @@ export default function NotFound(): React.JSX.Element {
             href="/" 
             className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-full hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <i className="ri-home-line mr-2"></i>
+            <svg className="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+            </svg>
             Return Home
           </Link>
           
@@ -72,7 +78,10 @@ export default function NotFound(): React.JSX.Element {
             href="/contact" 
             className="px-8 py-4 bg-white border-2 border-purple-600 text-purple-600 font-semibold rounded-full hover:bg-purple-600 hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <i className="ri-message-3-line mr-2"></i>
+            <svg className="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
             Contact Us
           </Link>
         </div>
