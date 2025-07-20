@@ -1,12 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function ResearchPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -16,20 +21,20 @@ export default function ResearchPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <a href="/" className="text-xl sm:text-2xl font-bold text-blue-900 cursor-pointer">Dr. Narendra Pandit</a>
+              <Link href="/" className="text-xl sm:text-2xl font-bold text-blue-900">Dr. Narendra Pandit</Link>
               <span className="ml-2 text-xs sm:text-sm text-gray-600">MBBS, MS, MCh</span>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="/" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Home</a>
-                <a href="/about" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">About</a>
-                <a href="/specialties" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Specialties</a>
-                <a href="/credentials" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Credentials</a>
-                <a href="/research" className="text-blue-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Research</a>
-                <a href="/experience" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Experience</a>
-                <a href="/contact" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Contact</a>
+                <Link href="/" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">Home</Link>
+                <Link href="/about" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">About</Link>
+                <Link href="/specialties" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">Specialties</Link>
+                <Link href="/credentials" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">Credentials</Link>
+                <Link href="/research" className="text-blue-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">Research</Link>
+                <Link href="/experience" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">Experience</Link>
+                <Link href="/contact" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">Contact</Link>
               </div>
             </div>
 
@@ -38,7 +43,8 @@ export default function ResearchPage() {
               <button
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors"
-                aria-expanded="false"
+                aria-expanded={isMenuOpen}
+                aria-label="Toggle navigation menu"
               >
                 <span className="sr-only">Open main menu</span>
                 {!isMenuOpen ? (
@@ -58,55 +64,55 @@ export default function ResearchPage() {
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-sm border-t border-gray-200">
-                <a 
+                <Link 
                   href="/" 
-                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   Home
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/about" 
-                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   About
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/specialties" 
-                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   Specialties
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/credentials" 
-                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   Credentials
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/research" 
-                  className="text-blue-900 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-blue-900 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   Research
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/experience" 
-                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   Experience
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/contact" 
-                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={closeMenu}
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           )}
