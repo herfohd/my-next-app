@@ -1,10 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
@@ -79,7 +84,7 @@ export default function Home() {
             backgroundImage: `url('https://readdy.ai/api/search-image?query=Modern%20medical%20facility%20with%20advanced%20surgical%20equipment%2C%20clean%20white%20hospital%20corridors%20with%20blue%20lighting%20accents%2C%20professional%20healthcare%20environment%20with%203D%20medical%20technology%20displays%2C%20futuristic%20medical%20center%20interior%20design&width=1920&height=1080&seq=hero-bg&orientation=landscape')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: window.innerWidth > 768 ? 'fixed' : 'scroll'
+            backgroundAttachment: isClient && window.innerWidth > 768 ? 'fixed' : 'scroll'
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/60"></div>
