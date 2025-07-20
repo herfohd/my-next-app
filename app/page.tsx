@@ -11,6 +11,11 @@ export default function Home() {
     setIsClient(true);
   }, []);
 
+  // Helper function to handle mobile menu close
+  const handleMobileMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
       {/* Navigation */}
@@ -61,16 +66,30 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu - FIXED */}
           <div className={`lg:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`}>
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
-              <Link href="/" className="text-blue-900 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>About</Link>
-              <Link href="/specialties" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>Specialties</Link>
-              <Link href="/credentials" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>Credentials</Link>
-              <Link href="/research" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>Research</Link>
-              <Link href="/experience" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>Experience</Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/" className="text-blue-900 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">Home</Link>
+              </div>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/about" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">About</Link>
+              </div>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/specialties" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">Specialties</Link>
+              </div>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/credentials" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">Credentials</Link>
+              </div>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/research" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">Research</Link>
+              </div>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/experience" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">Experience</Link>
+              </div>
+              <div onClick={handleMobileMenuClose}>
+                <Link href="/contact" className="text-gray-700 hover:text-blue-700 block px-3 py-2 text-base font-medium transition-colors">Contact</Link>
+              </div>
             </div>
           </div>
         </div>
