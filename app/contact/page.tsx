@@ -1,9 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function ContactPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -20,97 +27,118 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <a href="/" className="text-xl sm:text-2xl font-bold text-blue-900 cursor-pointer">Dr. Narendra Pandit</a>
+              <Link href="/" className="text-xl sm:text-2xl font-bold text-blue-900">
+                Dr. Narendra Pandit
+              </Link>
               <span className="ml-2 text-xs sm:text-sm text-gray-600">MBBS, MS, MCh</span>
             </div>
             
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="/" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Home</a>
-                <a href="/about" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">About</a>
-                <a href="/specialties" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Specialties</a>
-                <a href="/credentials" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Credentials</a>
-                <a href="/research" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Research</a>
-                <a href="/experience" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Experience</a>
-                <a href="/contact" className="text-blue-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors cursor-pointer">Contact</a>
+                <Link href="/" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  Home
+                </Link>
+                <Link href="/about" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  About
+                </Link>
+                <Link href="/specialties" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  Specialties
+                </Link>
+                <Link href="/credentials" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  Credentials
+                </Link>
+                <Link href="/research" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  Research
+                </Link>
+                <Link href="/experience" className="text-gray-700 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  Experience
+                </Link>
+                <Link href="/contact" className="text-blue-900 hover:text-blue-700 px-3 py-2 text-sm font-medium transition-colors">
+                  Contact
+                </Link>
               </div>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={toggleMobileMenu}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors"
-                aria-expanded="false"
-              >
-                <span className="sr-only">Open main menu</span>
-                {!isMobileMenuOpen ? (
-                  <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                ) : (
-                  <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                )}
-              </button>
-            </div>
+            {/* Mobile menu button - Only render after hydration */}
+            {isClient && (
+              <div className="md:hidden">
+                <button
+                  onClick={toggleMobileMenu}
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors"
+                  aria-expanded={isMobileMenuOpen}
+                >
+                  <span className="sr-only">Open main menu</span>
+                  {!isMobileMenuOpen ? (
+                    <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  ) : (
+                    <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-200">
-            <a 
-              href="/" 
-              className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              Home
-            </a>
-            <a 
-              href="/about" 
-              className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              About
-            </a>
-            <a 
-              href="/specialties" 
-              className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              Specialties
-            </a>
-            <a 
-              href="/credentials" 
-              className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              Credentials
-            </a>
-            <a 
-              href="/research" 
-              className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              Research
-            </a>
-            <a 
-              href="/experience" 
-              className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              Experience
-            </a>
-            <a 
-              href="/contact" 
-              className="text-blue-900 hover:text-blue-700 hover:bg-blue-50 block px-3 py-2 text-base font-medium transition-colors rounded-md cursor-pointer"
-              onClick={closeMobileMenu}
-            >
-              Contact
-            </a>
+        {/* Mobile menu - Only render after hydration */}
+        {isClient && (
+          <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-200">
+              <Link 
+                href="/" 
+                className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                About
+              </Link>
+              <Link 
+                href="/specialties" 
+                className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                Specialties
+              </Link>
+              <Link 
+                href="/credentials" 
+                className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                Credentials
+              </Link>
+              <Link 
+                href="/research" 
+                className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                Research
+              </Link>
+              <Link 
+                href="/experience" 
+                className="text-gray-700 hover:text-blue-700 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                Experience
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-blue-900 hover:text-blue-700 hover:bg-blue-50 block px-3 py-2 text-base font-medium transition-colors rounded-md"
+                onClick={closeMobileMenu}
+              >
+                Contact
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
 
       {/* Content Sections */}
