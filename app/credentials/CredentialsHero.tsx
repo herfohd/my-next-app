@@ -1,6 +1,22 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 export default function CredentialsHero() {
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    // Check screen size after component mounts
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth > 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   return (
     <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
       <div 
@@ -9,7 +25,7 @@ export default function CredentialsHero() {
           backgroundImage: `url('https://readdy.ai/api/search-image?query=Medical%20graduation%20ceremony%20with%20diplomas%20and%20certificates%2C%20academic%20achievement%20in%20medical%20education%2C%20professional%20medical%20qualifications%20and%20degrees%2C%20university%20medical%20school%20setting&width=1920&height=1080&seq=credentials-hero&orientation=landscape')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: window.innerWidth > 768 ? 'fixed' : 'scroll'
+          backgroundAttachment: isLargeScreen ? 'fixed' : 'scroll'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-blue-900/85"></div>
