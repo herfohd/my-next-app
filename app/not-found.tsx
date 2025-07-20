@@ -1,119 +1,106 @@
-'use client';
-
 import Link from 'next/link';
-import React from 'react';
 
-export default function NotFound(): React.JSX.Element {
+export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
-      {/* Inline styles */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .delay-1 { animation-delay: 1s; }
-          .delay-2 { animation-delay: 2s; }
-          .delay-0-5 { animation-delay: 0.5s; }
-          .delay-1-5 { animation-delay: 1.5s; }
-          .delay-2-5 { animation-delay: 2.5s; }
-        `
-      }} />
-
-      {/* Background decorative elements */}
-      <div className="absolute top-10 left-10 w-20 h-20 bg-blue-100 rounded-full opacity-50 animate-pulse"></div>
-      <div className="absolute top-1/4 right-16 w-16 h-16 bg-purple-100 rounded-full opacity-40 animate-pulse delay-1"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-12 h-12 bg-blue-200 rounded-full opacity-30 animate-pulse delay-2"></div>
-      <div className="absolute bottom-16 right-10 w-24 h-24 bg-purple-100 rounded-full opacity-40 animate-pulse delay-0-5"></div>
-
-      {/* Medical icons floating */}
-      <div className="absolute top-20 right-1/4 text-blue-200 opacity-60 animate-bounce delay-1-5">
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd"/>
-        </svg>
-      </div>
-      <div className="absolute bottom-32 left-16 text-purple-200 opacity-60 animate-bounce delay-2-5">
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/>
-        </svg>
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10 max-w-2xl mx-auto">
-        {/* 404 Number */}
-        <div className="mb-8">
-          <h1 className="text-8xl sm:text-9xl lg:text-[12rem] font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-none animate-pulse">
-            404
-          </h1>
-        </div>
-
-        {/* Main message */}
-        <div className="mb-8 space-y-4">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            This page has not been generated
-          </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">
-            Tell me what you would like on this page
-          </p>
-        </div>
-
-        {/* Description */}
-        <div className="mb-12">
-          <p className="text-gray-500 text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
-            This section of Dr. Narendra Pandit's website is still being developed. 
-            We're working to bring you comprehensive medical information and services.
-          </p>
-        </div>
-
-        {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-          <Link 
-            href="/" 
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-full hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 text-center">
+        {/* Error Icon */}
+        <div className="flex justify-center">
+          <svg 
+            className="w-24 h-24 text-indigo-600"
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
           >
-            <svg className="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={1} 
+              d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-3-8v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+            />
+          </svg>
+        </div>
+
+        {/* Error Content */}
+        <div className="space-y-4">
+          <h1 className="text-6xl font-bold text-gray-900">404</h1>
+          <h2 className="text-2xl font-semibold text-gray-800 sm:text-3xl">
+            Page Not Found
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Sorry, we couldn't find the page you're looking for. 
+            The page might have been moved, deleted, or the URL might be incorrect.
+          </p>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+          <Link 
+            href="/"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+          >
+            <svg 
+              className="w-5 h-5 mr-2" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" 
+              />
             </svg>
-            Return Home
+            Go Home
           </Link>
           
-          <Link 
-            href="/contact" 
-            className="px-8 py-4 bg-white border-2 border-purple-600 text-purple-600 font-semibold rounded-full hover:bg-purple-600 hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
           >
-            <svg className="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            <svg 
+              className="w-5 h-5 mr-2" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M15 19l-7-7 7-7" 
+              />
             </svg>
-            Contact Us
+            Try Again
           </Link>
         </div>
 
-        {/* Quick links */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-sm text-gray-500 mb-4">You might be looking for:</p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <Link href="/specialties" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-              Specialties
+        {/* Additional Help */}
+        <div className="pt-8 border-t border-gray-200">
+          <p className="text-sm text-gray-500 mb-4">
+            If you believe this is an error, please contact support or try:
+          </p>
+          <div className="space-y-2 text-sm">
+            <Link 
+              href="/contact" 
+              className="text-indigo-600 hover:text-indigo-800 block"
+            >
+              Contact Support
             </Link>
-            <Link href="/about" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-              About Dr. Pandit
+            <Link 
+              href="/about" 
+              className="text-indigo-600 hover:text-indigo-800 block"
+            >
+              About Us
             </Link>
-            <Link href="/credentials" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-              Credentials
-            </Link>
-            <Link href="/research" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-              Research
-            </Link>
-            <Link href="/experience" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-              Experience
+            <Link 
+              href="/services" 
+              className="text-indigo-600 hover:text-indigo-800 block"
+            >
+              Our Services
             </Link>
           </div>
-        </div>
-      </div>
-
-      {/* Medical cross decoration */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-300">
-        <div className="relative">
-          <div className="w-12 h-1 bg-current"></div>
-          <div className="w-1 h-12 bg-current absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
         </div>
       </div>
     </div>
